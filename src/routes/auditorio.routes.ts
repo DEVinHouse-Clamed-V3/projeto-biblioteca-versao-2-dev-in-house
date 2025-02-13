@@ -1,7 +1,14 @@
-import { Router } from 'express';
+import { Router } from "express";
+import { AuditoriumController } from "../controllers/AuditoriumController";
 
-const auditorioRoutes = Router();
+const routes = Router();
+const controller = new AuditoriumController();
 
-/* Implemente aqui os métodos que irão atender as requisições HTTP. */
+routes.post("/auditoriums", controller.create);
+routes.get("/auditoriums", controller.getAll);
+routes.get("/auditoriums/:id", controller.getById);
+routes.put("/auditoriums/:id", controller.update);
+routes.delete("/auditoriums/:id", controller.delete);
+routes.get("/auditoriums/concepts", controller.getConceptAuditoriums);
 
-export default auditorioRoutes;
+export default routes;
